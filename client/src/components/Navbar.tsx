@@ -23,26 +23,22 @@ export default function Navbar() {
       <div className="container">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href="/">
-            <a className="flex items-center gap-2 group">
+          <Link href="/" className="flex items-center gap-2 group">
               <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-accent to-accent/70 rounded-lg flex items-center justify-center">
                 <span className="text-accent-foreground font-bold text-sm md:text-base">LP</span>
               </div>
               <span className="text-lg md:text-xl font-semibold text-foreground group-hover:text-accent transition-colors">
                 Luxury Portfolio
               </span>
-            </a>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             <LanguageSwitcher />
             {navItems.map((item) => (
-              <Link key={item.name} href={item.href}>
-                <a className="text-sm font-medium text-muted-foreground hover:text-accent transition-colors duration-300 relative group">
+              <Link key={item.name} href={item.href} className="text-sm font-medium text-muted-foreground hover:text-accent transition-colors duration-300 relative group">
                   {item.name}
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300" />
-                </a>
               </Link>
             ))}
           </div>
@@ -76,17 +72,16 @@ export default function Navbar() {
           >
             <div className="flex flex-col gap-4 p-4">
               {navItems.map((item, index) => (
-                <Link key={item.name} href={item.href}>
-                  <motion.a
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05 }}
-                    className="text-sm font-medium text-muted-foreground hover:text-accent transition-colors py-2"
-                    onClick={() => setIsOpen(false)}
-                  >
+                <motion.div
+                  key={item.name}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                >
+                  <Link href={item.href} className="block text-sm font-medium text-muted-foreground hover:text-accent transition-colors py-2" onClick={() => setIsOpen(false)}>
                     {item.name}
-                  </motion.a>
-                </Link>
+                  </Link>
+                </motion.div>
               ))}
             </div>
           </motion.div>

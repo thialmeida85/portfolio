@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowDown, ExternalLink } from 'lucide-react';
+import { Link } from 'wouter';
 import Navbar from '@/components/Navbar';
 
 export default function Home() {
@@ -72,19 +73,19 @@ export default function Home() {
               variants={itemVariants}
               className="flex flex-col sm:flex-row gap-6 justify-center mb-24"
             >
-              <a
+              <Link
                 href="/design"
                 className="px-10 py-4 bg-transparent border border-accent/30 text-foreground hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-500 uppercase tracking-widest text-xs flex items-center justify-center gap-3 group"
               >
                 Explorar Portfólio
                 <ExternalLink className="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" />
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/contact"
                 className="px-10 py-4 border border-transparent text-muted-foreground hover:text-accent transition-all duration-500 uppercase tracking-widest text-xs"
               >
                 Entrar em Contato
-              </a>
+              </Link>
             </motion.div>
 
             {/* Scroll indicator */}
