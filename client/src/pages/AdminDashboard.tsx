@@ -161,7 +161,13 @@ export default function AdminDashboard() {
                         <p className="text-sm text-muted-foreground">{message.email}</p>
                       </div>
                       <span
-                        className={`px-2 py-1 rounded text-xs font-medium ${\n                        message.status === 'new'\n                          ? 'bg-accent/20 text-accent'\n                          : message.status === 'replied'\n                          ? 'bg-green-500/20 text-green-500'\n                          : 'bg-muted text-muted-foreground'\n                      }`}
+                        className={`px-2 py-1 rounded text-xs font-medium ${
+                          message.status === 'new'
+                            ? 'bg-accent/20 text-accent'
+                            : message.status === 'replied'
+                            ? 'bg-green-500/20 text-green-500'
+                            : 'bg-muted text-muted-foreground'
+                        }`}
                       >
                         {message.status === 'new' ? 'Nova' : message.status === 'replied' ? 'Respondida' : 'Lida'}
                       </span>
