@@ -134,7 +134,7 @@ export default function DesignPortfolio() {
                   <div>
                     <h3 className="text-lg font-semibold mb-3">Ferramentas</h3>
                     <div className="flex flex-wrap gap-2">
-                      {selectedProject.technologies.split(',').map((tool) => (
+                      {selectedProject.technologies.split(',').map((tool: string) => (
                         <span
                           key={tool.trim()}
                           className="px-3 py-1 bg-accent/10 text-accent rounded-full text-sm font-medium"

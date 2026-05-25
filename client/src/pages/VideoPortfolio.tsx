@@ -108,7 +108,7 @@ export default function VideoPortfolio() {
                       <div>
                         <h4 className="font-semibold mb-3">Ferramentas</h4>
                         <div className="flex flex-wrap gap-2">
-                          {project.technologies.split(',').map((tool) => (
+                          {project.technologies.split(',').map((tool: string) => (
                             <span
                               key={tool.trim()}
                               className="px-3 py-1 bg-accent/10 text-accent rounded-full text-sm font-medium"

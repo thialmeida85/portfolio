@@ -40,18 +40,15 @@ export default function CustomCursor() {
     <>
       {/* Hide default cursor */}
       <style>{`
-        * {
-          cursor: none;
-        }
-        a, button, [role="button"] {
-          cursor: none;
+        body, button, a, [role="button"] {
+          cursor: none !important;
         }
       `}</style>
 
       {/* Custom Cursor */}
       <motion.div
         ref={cursorRef}
-        className="fixed pointer-events-none z-[9999] mix-blend-screen"
+        className="fixed pointer-events-none z-[9999] mix-blend-normal"
         animate={{
           x: mousePosition.x - (isHovering ? 20 : 8),
           y: mousePosition.y - (isHovering ? 20 : 8),
@@ -65,10 +62,10 @@ export default function CustomCursor() {
       >
         {/* Outer ring */}
         <motion.div
-          className="absolute w-8 h-8 border-2 border-accent rounded-full"
+          className="absolute w-8 h-8 border-2 border-accent bg-accent/10 rounded-full shadow-[0_0_0_8px_rgba(201,168,76,0.08)]"
           animate={{
             scale: isHovering ? 1.5 : 1,
-            opacity: isHovering ? 0.8 : 0.6,
+            opacity: isHovering ? 0.95 : 0.7,
           }}
           transition={{ duration: 0.2 }}
         />

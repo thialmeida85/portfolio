@@ -64,7 +64,7 @@ export default function CodingPortfolio() {
                     <div className="mb-6">
                       <h4 className="text-sm font-semibold mb-3 text-accent">Destaques</h4>
                       <ul className="space-y-1">
-                        {project.brief.split(',').map((feature) => (
+                        {project.brief.split(',').map((feature: string) => (
                           <li key={feature.trim()} className="text-xs text-muted-foreground flex items-center gap-2">
                             <span className="w-1 h-1 bg-accent rounded-full" />
                             {feature.trim()}
@@ -78,7 +78,7 @@ export default function CodingPortfolio() {
                   {project.technologies && (
                     <div className="mb-6">
                       <div className="flex flex-wrap gap-2">
-                        {project.technologies.split(',').map((tech) => (
+                        {project.technologies.split(',').map((tech: string) => (
                           <span
                             key={tech.trim()}
                             className="px-2 py-1 bg-accent/10 text-accent rounded text-xs font-medium"

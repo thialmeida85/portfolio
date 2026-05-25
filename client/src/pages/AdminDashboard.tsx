@@ -12,7 +12,7 @@ export default function AdminDashboard() {
   const [showForm, setShowForm] = useState(false);
 
   const { data: projects, isLoading: projectsLoading } = trpc.portfolio.getProjects.useQuery({});
-  const { data: messages, isLoading: messagesLoading } = trpc.contact.getMessages.useQuery({});
+  const { data: messages, isLoading: messagesLoading } = trpc.contact.getMessages.useQuery();
 
   // Redirect if not admin
   if (!user || user.role !== 'admin') {

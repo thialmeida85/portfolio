@@ -156,7 +156,7 @@ export default function ProjectDetail() {
                 >
                   <h3 className="text-lg font-bold mb-4 text-accent">Tecnologias</h3>
                   <div className="flex flex-wrap gap-2">
-                    {project.technologies.split(',').map((tech) => (
+                    {project.technologies.split(',').map((tech: string) => (
                       <span
                         key={tech.trim()}
                         className="px-3 py-1 bg-accent/10 text-accent rounded-full text-sm font-medium"
