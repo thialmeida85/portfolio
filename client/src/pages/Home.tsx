@@ -1,7 +1,54 @@
 import { motion } from 'framer-motion';
-import { ArrowDown, ExternalLink } from 'lucide-react';
+import { ArrowDown, ExternalLink, Film, LayoutGrid, Monitor, Sparkles } from 'lucide-react';
 import { Link } from 'wouter';
 import Navbar from '@/components/Navbar';
+
+const featuredWork = [
+  {
+    title: 'Identidade Visual para marca de moda',
+    category: 'Branding',
+    href: '/design',
+    image:
+      'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=1200&h=800&fit=crop',
+  },
+  {
+    title: 'Campanha social para rede de lifestyle',
+    category: 'Social Media',
+    href: '/video',
+    image:
+      'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&h=800&fit=crop',
+  },
+  {
+    title: 'Landing page premium para estúdio digital',
+    category: 'Web Design',
+    href: '/coding',
+    image:
+      'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=800&fit=crop',
+  },
+];
+
+const services = [
+  {
+    title: 'Branding & Identidade Visual',
+    description: 'Construção de marcas memoráveis, logotipos, paletas e sistemas visuais.',
+    icon: Sparkles,
+  },
+  {
+    title: 'Social Media & Conteúdo',
+    description: 'Criatividade estratégica para posts, anúncios e campanhas envolventes.',
+    icon: LayoutGrid,
+  },
+  {
+    title: 'Web Design Premium',
+    description: 'Experiências digitais com design elegante, usabilidade e conversão.',
+    icon: Monitor,
+  },
+  {
+    title: 'Vídeo, Motion & VFX',
+    description: 'Narrativas em movimento com edição, animação e pós-produção.',
+    icon: Film,
+  },
+];
 
 export default function Home() {
   const containerVariants = {
@@ -9,8 +56,8 @@ export default function Home() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.4,
+        staggerChildren: 0.24,
+        delayChildren: 0.35,
         ease: [0.25, 0.46, 0.45, 0.94] as any,
       },
     },
@@ -30,13 +77,10 @@ export default function Home() {
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="min-h-screen flex items-center pt-20 relative overflow-hidden">
-        {/* Background gradient effect */}
+      <section className="min-h-screen pt-20 relative overflow-hidden">
         <div className="absolute inset-0 -z-10">
-          <div className="absolute top-1/4 left-1/4 w-[40rem] h-[40rem] bg-accent/5 rounded-full blur-[100px]" />
-          <div className="absolute bottom-1/4 right-1/4 w-[40rem] h-[40rem] bg-accent/5 rounded-full blur-[100px]" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
+          <div className="absolute top-12 left-1/2 h-[30rem] w-[30rem] -translate-x-1/2 rounded-full bg-accent/10 blur-[120px]" />
+          <div className="absolute bottom-10 right-10 h-[18rem] w-[18rem] rounded-full bg-white/5 blur-[80px]" />
         </div>
 
         <div className="container">
@@ -44,176 +88,184 @@ export default function Home() {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="max-w-4xl mx-auto text-center"
+            className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]"
           >
-            {/* Headline */}
-            <motion.div variants={itemVariants}>
-              <div className="flex items-center justify-center gap-4 mb-6">
-                <div className="h-[1px] w-12 bg-accent" />
-                <span className="text-accent uppercase tracking-[0.3em] text-sm font-medium">Estúdio de Criação</span>
-                <div className="h-[1px] w-12 bg-accent" />
+            <div className="max-w-2xl">
+              <motion.div variants={itemVariants} className="inline-flex items-center gap-3 mb-6 text-xs uppercase tracking-[0.35em] text-accent font-semibold">
+                <span>UX + Branding + Motion</span>
+              </motion.div>
+
+              <motion.h1
+                variants={itemVariants}
+                className="text-5xl md:text-6xl xl:text-7xl font-semibold leading-[0.98] tracking-tight"
+              >
+                Portfólio de design para marcas que querem ser lembradas.
+              </motion.h1>
+
+              <motion.p
+                variants={itemVariants}
+                className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed"
+              >
+                Crio identidade visual, social media, web design e vídeos com movimento que comunicam a sua essência e elevam a presença digital.
+              </motion.p>
+
+              <motion.div
+                variants={itemVariants}
+                className="mt-12 flex flex-col sm:flex-row gap-4"
+              >
+                <Link
+                  href="/design"
+                  className="inline-flex items-center justify-center rounded-full border border-accent px-8 py-4 text-sm font-semibold uppercase tracking-[0.24em] text-foreground transition hover:bg-accent hover:text-accent-foreground"
+                >
+                  Ver Portfólio
+                  <ExternalLink className="ml-3 h-4 w-4" />
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center rounded-full bg-accent px-8 py-4 text-sm font-semibold uppercase tracking-[0.24em] text-accent-foreground transition hover:bg-accent/90"
+                >
+                  Vamos Conversar
+                </Link>
+              </motion.div>
+            </div>
+
+            <motion.div variants={itemVariants} className="grid gap-6 sm:grid-cols-2">
+              <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-card/80 shadow-[0_28px_120px_-70px_rgba(0,0,0,0.9)]">
+                <img
+                  src="https://images.unsplash.com/photo-1528731708534-816fe59f90dc?w=800&h=900&fit=crop"
+                  alt="Branding project preview"
+                  className="h-[320px] w-full object-cover transition duration-500 ease-out hover:scale-105"
+                />
+                <div className="p-6">
+                  <span className="text-sm uppercase tracking-[0.35em] text-accent font-semibold">Branding</span>
+                  <h2 className="mt-4 text-xl font-semibold">Identidade visual com presença editorial.</h2>
+                </div>
               </div>
-              <h1 className="text-5xl md:text-7xl lg:text-[7rem] font-normal mb-8 leading-[1.1] tracking-tight">
-                Transformando <em className="text-accent italic font-serif">Ideias</em> em
-                <br />
-                Experiências Visuais
-              </h1>
-            </motion.div>
-
-            {/* Subtitle */}
-            <motion.p
-              variants={itemVariants}
-              className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed font-light"
-            >
-              Especializado em design high-end, cinematografia e interfaces web imersivas. Elevando o posicionamento de marcas excepcionais.
-            </motion.p>
-
-            {/* CTA Buttons */}
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-6 justify-center mb-24"
-            >
-              <Link
-                href="/design"
-                className="px-10 py-4 bg-transparent border border-accent/30 text-foreground hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-500 uppercase tracking-widest text-xs flex items-center justify-center gap-3 group"
-              >
-                Explorar Portfólio
-                <ExternalLink className="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" />
-              </Link>
-              <Link
-                href="/contact"
-                className="px-10 py-4 border border-transparent text-muted-foreground hover:text-accent transition-all duration-500 uppercase tracking-widest text-xs"
-              >
-                Entrar em Contato
-              </Link>
-            </motion.div>
-
-            {/* Scroll indicator */}
-            <motion.div
-              variants={itemVariants}
-              className="flex justify-center"
-            >
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity as any }}
-              className="cursor-pointer"
-              onClick={() => {
-                const element = document.getElementById('about');
-                element?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              <ArrowDown className="w-6 h-6 text-accent" />
-            </motion.div>
+              <div className="grid gap-6">
+                <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-card/80 p-6">
+                  <span className="text-sm uppercase tracking-[0.35em] text-accent font-semibold">Social Media</span>
+                  <p className="mt-4 text-muted-foreground leading-relaxed">Conteúdos que geram engajamento e mantêm a marca relevante.</p>
+                </div>
+                <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-card/80 p-6">
+                  <span className="text-sm uppercase tracking-[0.35em] text-accent font-semibold">Web Design</span>
+                  <p className="mt-4 text-muted-foreground leading-relaxed">Landing pages e sites com visual premium e conversão.</p>
+                </div>
+              </div>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* About Section */}
       <section id="about" className="py-20 md:py-32 bg-card/30 border-y border-border">
         <div className="container">
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="max-w-3xl mx-auto"
+            className="max-w-4xl mx-auto"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-8">Minha Jornada</h2>
-            
-            <div className="space-y-6 text-muted-foreground">
-              <p>
-                Minha trajetória começou com uma paixão genuína por criar. Desde criança, fui fascinado por como as imagens, cores e movimento podem comunicar emoções e ideias de forma poderosa. Essa curiosidade me levou a explorar diferentes disciplinas criativas.
-              </p>
-              
-              <p>
-                Ao longo dos anos, desenvolvi expertise em design gráfico, criando identidades visuais que contam histórias de marcas. Depois, mergulhei no mundo da edição de vídeo e VFX, descobrindo a magia de transformar conceitos em movimento. E mais recentemente, comecei a explorar o desenvolvimento web com uma estética "vibe coding", unindo design e funcionalidade.
-              </p>
-              
-              <p>
-                O que me diferencia é a capacidade de pensar estrategicamente sobre cada projeto. Não crio apenas para ser bonito — crio para resolver problemas, comunicar mensagens e gerar impacto. Cada pixel, cada frame, cada linha de código tem um propósito.
-              </p>
+            <div className="grid gap-10 lg:grid-cols-[0.95fr_0.6fr] items-start">
+              <div>
+                <p className="text-sm uppercase tracking-[0.35em] text-accent font-semibold mb-4">Sobre meu trabalho</p>
+                <h2 className="text-3xl md:text-4xl font-bold leading-tight">Design autoral, direção visual e storytelling que se conectam com audiências.</h2>
+              </div>
+              <div className="rounded-[2rem] border border-white/10 bg-background/80 p-8 shadow-[0_35px_120px_-60px_rgba(0,0,0,0.9)]">
+                <p className="text-muted-foreground leading-relaxed">
+                  Eu trabalho em projetos que exigem cuidado com imagem, estratégia de conteúdo e animação. Meu foco é criar peças que sejam bonitas e que também tragam resultados reais para marcas e negócios.
+                </p>
+              </div>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-8 mt-12 pt-12 border-t border-border">
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-accent mb-2">50+</div>
-                <p className="text-sm text-muted-foreground">Projetos Completos</p>
+            <div className="grid gap-6 mt-16 md:grid-cols-3">
+              <div className="rounded-[2rem] border border-white/10 bg-background/70 p-8">
+                <span className="text-3xl font-semibold text-accent">8+</span>
+                <p className="mt-4 text-muted-foreground">Anos criando peças visuais para marcas.</p>
               </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-accent mb-2">8+</div>
-                <p className="text-sm text-muted-foreground">Anos de Experiência</p>
+              <div className="rounded-[2rem] border border-white/10 bg-background/70 p-8">
+                <span className="text-3xl font-semibold text-accent">50+</span>
+                <p className="mt-4 text-muted-foreground">Projetos concluídos em branding, vídeo e web.</p>
               </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-accent mb-2">100%</div>
-                <p className="text-sm text-muted-foreground">Dedicação</p>
+              <div className="rounded-[2rem] border border-white/10 bg-background/70 p-8">
+                <span className="text-3xl font-semibold text-accent">100%</span>
+                <p className="mt-4 text-muted-foreground">Compromisso com estética de alto padrão.</p>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Services Preview */}
       <section className="py-20 md:py-32">
         <div className="container">
-          <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">Áreas de Expertise</h2>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              {
-                title: 'Design Gráfico',
-                description: 'Identidade visual, branding, design editorial e sistemas de design',
-                icon: '✨',
-              },
-              {
-                title: 'Edição de Vídeo',
-                description: 'Montagem, color grading, pós-produção e storytelling audiovisual',
-                icon: '🎬',
-              },
-              {
-                title: 'VFX & Motion',
-                description: 'Composição, animação 3D, simulações e efeitos visuais complexos',
-                icon: '🎆',
-              },
-              {
-                title: 'Vibe Coding',
-                description: 'Desenvolvimento web, interfaces interativas e experiências digitais',
-                icon: '💻',
-              },
-            ].map((service, index) => (
+          <div className="flex flex-col items-center text-center gap-4 mb-16">
+            <span className="text-sm uppercase tracking-[0.35em] text-accent font-semibold">Serviços</span>
+            <h2 className="text-3xl md:text-4xl font-bold">Do branding à presença digital, tudo em um mesmo estúdio.</h2>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {services.map(({ title, description, icon: Icon }, index) => (
               <motion.div
-                key={service.title}
+                key={title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.08 }}
                 viewport={{ once: true }}
-                className="card-luxury group cursor-pointer"
+                className="rounded-[2rem] border border-white/10 bg-card/80 p-8 shadow-[0_24px_80px_-70px_rgba(0,0,0,0.9)]"
               >
-                <div className="text-4xl mb-4">{service.icon}</div>
-                <h3 className="text-2xl font-bold mb-3 group-hover:text-accent transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-muted-foreground">{service.description}</p>
+                <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/10 text-accent mb-6">
+                  <Icon className="h-6 w-6" />
+                </div>
+                <h3 className="text-2xl font-semibold mb-3">{title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
+      <section className="py-20 md:py-32 bg-card/30 border-t border-border">
+        <div className="container">
+          <div className="flex flex-col items-center text-center gap-3 mb-12">
+            <span className="text-sm uppercase tracking-[0.35em] text-accent font-semibold">Trabalhos selecionados</span>
+            <h2 className="text-3xl md:text-4xl font-bold">Projetos com presença, narrativa e estilo.</h2>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {featuredWork.map(({ title, category, href, image }, index) => (
+              <motion.div
+                key={title}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.08 }}
+                viewport={{ once: true }}
+                className="group overflow-hidden rounded-[2rem] border border-white/10 bg-card/80 shadow-[0_24px_80px_-70px_rgba(0,0,0,0.9)]"
+              >
+                <Link href={href} className="block relative overflow-hidden">
+                  <img src={image} alt={title} className="h-56 w-full object-cover transition duration-500 group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                </Link>
+                <div className="p-6">
+                  <span className="text-sm uppercase tracking-[0.35em] text-accent font-semibold">{category}</span>
+                  <h3 className="mt-4 text-xl font-semibold leading-tight">{title}</h3>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="py-20 md:py-32 bg-card/50 border-t border-border">
         <div className="container text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Pronto para colaborar?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Pronto para começar?</h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Vamos criar algo extraordinário juntos. Entre em contato para discutir seu próximo projeto.
+            Esse é o momento certo para dar forma visual à sua marca. Vamos desenvolver um projeto que destaque sua presença na web e nas redes sociais.
           </p>
-          <a
+          <Link
             href="/contact"
-            className="inline-block px-8 py-4 bg-accent text-accent-foreground rounded-lg font-semibold hover:bg-accent/90 transition-all duration-300 transform hover:scale-105"
+            className="inline-flex items-center justify-center rounded-full bg-accent px-10 py-4 text-sm font-semibold uppercase tracking-[0.24em] text-accent-foreground transition hover:bg-accent/90"
           >
-            Iniciar Conversa
-          </a>
+            Falar com o estúdio
+          </Link>
         </div>
       </section>
     </div>
