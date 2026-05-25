@@ -8,18 +8,20 @@ export default function Home() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
+        staggerChildren: 0.3,
+        delayChildren: 0.4,
+        ease: [0.25, 0.46, 0.45, 0.94],
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 30, filter: 'blur(10px)' },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8 },
+      filter: 'blur(0px)',
+      transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
@@ -28,11 +30,12 @@ export default function Home() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="pt-32 md:pt-40 pb-20 md:pb-32 relative overflow-hidden">
+      <section className="min-h-screen flex items-center pt-20 relative overflow-hidden">
         {/* Background gradient effect */}
         <div className="absolute inset-0 -z-10">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-accent/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-10 w-72 h-72 bg-accent/5 rounded-full blur-3xl" />
+          <div className="absolute top-1/4 left-1/4 w-[40rem] h-[40rem] bg-accent/5 rounded-full blur-[100px]" />
+          <div className="absolute bottom-1/4 right-1/4 w-[40rem] h-[40rem] bg-accent/5 rounded-full blur-[100px]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
         </div>
 
         <div className="container">
@@ -44,36 +47,41 @@ export default function Home() {
           >
             {/* Headline */}
             <motion.div variants={itemVariants}>
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
-                Transformando <span className="gradient-text">Ideias</span> em
+              <div className="flex items-center justify-center gap-4 mb-6">
+                <div className="h-[1px] w-12 bg-accent" />
+                <span className="text-accent uppercase tracking-[0.3em] text-sm font-medium">Estúdio de Criação</span>
+                <div className="h-[1px] w-12 bg-accent" />
+              </div>
+              <h1 className="text-5xl md:text-7xl lg:text-[7rem] font-normal mb-8 leading-[1.1] tracking-tight">
+                Transformando <em className="text-accent italic font-serif">Ideias</em> em
                 <br />
-                <span className="gradient-text">Experiências Visuais</span>
+                Experiências Visuais
               </h1>
             </motion.div>
 
             {/* Subtitle */}
             <motion.p
               variants={itemVariants}
-              className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed"
+              className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed font-light"
             >
-              Sou um criador multidisciplinar apaixonado por design, movimento e código. Com experiência em design gráfico, edição de vídeo, VFX e desenvolvimento web, transformo conceitos complexos em soluções visuais impactantes que conectam com o público.
+              Especializado em design high-end, cinematografia e interfaces web imersivas. Elevando o posicionamento de marcas excepcionais.
             </motion.p>
 
             {/* CTA Buttons */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+              className="flex flex-col sm:flex-row gap-6 justify-center mb-24"
             >
               <a
                 href="/design"
-                className="px-8 py-4 bg-accent text-accent-foreground rounded-lg font-semibold hover:bg-accent/90 transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
+                className="px-10 py-4 bg-transparent border border-accent/30 text-foreground hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-500 uppercase tracking-widest text-xs flex items-center justify-center gap-3 group"
               >
                 Explorar Portfólio
-                <ExternalLink className="w-4 h-4" />
+                <ExternalLink className="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" />
               </a>
               <a
                 href="/contact"
-                className="px-8 py-4 border border-accent text-accent rounded-lg font-semibold hover:bg-accent/10 transition-all duration-300"
+                className="px-10 py-4 border border-transparent text-muted-foreground hover:text-accent transition-all duration-500 uppercase tracking-widest text-xs"
               >
                 Entrar em Contato
               </a>
