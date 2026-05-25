@@ -3,10 +3,10 @@ import { motion } from 'framer-motion';
 import { Plus, Edit2, Trash2, Eye, EyeOff, LogOut, Loader2 } from 'lucide-react';
 import { trpc } from '@/lib/trpc';
 import { useAuth } from '@/hooks/useAuth';
-import { useNavigate } from 'wouter';
+import { useLocation } from 'wouter';
 
 export default function AdminDashboard() {
-  const navigate = useNavigate();
+  const [, setLocation] = useLocation();
   const { user, logout } = useAuth();
   const [activeTab, setActiveTab] = useState<'projects' | 'messages'>('projects');
   const [showForm, setShowForm] = useState(false);
@@ -22,7 +22,7 @@ export default function AdminDashboard() {
           <h1 className="text-2xl font-bold mb-4">Acesso Negado</h1>
           <p className="text-muted-foreground mb-6">Apenas administradores podem acessar esta área.</p>
           <button
-            onClick={() => navigate('/')}
+            onClick={() => setLocation('/')}
             className="px-6 py-2 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors"
           >
             Voltar ao Home
@@ -34,7 +34,7 @@ export default function AdminDashboard() {
 
   const handleLogout = async () => {
     await logout();
-    navigate('/');
+    setLocation('/');
   };
 
   return (

@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from 'wouter';
+import { useParams, useLocation } from 'wouter';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ExternalLink, Github, Loader2 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
@@ -6,7 +6,7 @@ import { trpc } from '@/lib/trpc';
 
 export default function ProjectDetail() {
   const params = useParams<{ id: string }>();
-  const navigate = useNavigate();
+  const [, setLocation] = useLocation();
   const projectId = parseInt(params?.id || '0');
 
   const { data: allProjects, isLoading } = trpc.portfolio.getProjects.useQuery({});
@@ -27,7 +27,7 @@ export default function ProjectDetail() {
         <div className="container pt-32 text-center">
           <h1 className="text-2xl font-bold mb-4">Projeto não encontrado</h1>
           <button
-            onClick={() => navigate('/')}
+              onClick={() => setLocation('/')}
             className="px-6 py-2 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors"
           >
             Voltar ao Home
@@ -45,7 +45,7 @@ export default function ProjectDetail() {
       <section className="pt-32 md:pt-40 pb-20">
         <div className="container">
           <button
-            onClick={() => navigate(-1)}
+            onClick={() => window.history.back()}
             className="flex items-center gap-2 text-accent hover:text-accent/80 transition-colors mb-8"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -222,7 +222,7 @@ export default function ProjectDetail() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  onClick={() => navigate(`/project/${relatedProject.id}`)}
+                onClick={() => setLocation(`/project/${relatedProject.id}`)}
                   className="group cursor-pointer"
                 >
                   <div className="relative overflow-hidden rounded-lg mb-4 aspect-video bg-card border border-border">
